@@ -1,0 +1,1502 @@
+<html id="inicio"> 
+    
+    <header>
+        <meta charset="UTF-8">
+        <title>SolarSur</title>
+        <link rel="icon" href="favicon.png" type="image/png">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+            <a href="index.html" class="logo_link"> 
+                <h1 class="logo"><img src="Recurso 2.svg" alt="" class="tamaño-logo"></h1>
+            </a>
+
+            <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const logoImage = document.querySelector('.logo img'); // Selecciona la etiqueta img dentro de la clase logo
+  const initialImageSrc = "Recurso 2.svg"; // Ruta de la imagen inicial
+  const scrolledImageSrc = "Recurso 1.svg"; // Ruta de la imagen que se mostrará al hacer scroll
+  const scrollThreshold = 445; // Define la cantidad de píxeles para el cambio de imagen
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY >= scrollThreshold) {
+      logoImage.src = scrolledImageSrc; // Cambia la fuente de la imagen
+    } else {
+      logoImage.src = initialImageSrc; // Restaura la fuente de la imagen inicial
+    }
+  });
+});
+    </script>
+
+
+<script>
+  document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+      event.preventDefault();
+      let currentZoom = parseFloat(document.body.style.zoom || 1);
+      let zoomFactor = 0.05;
+
+      if (event.deltaY < 0) {
+        // Zoom in
+        document.body.style.zoom = currentZoom + zoomFactor;
+      } else {
+        // Zoom out
+        if (currentZoom > 1) {
+          document.body.style.zoom = Math.max(1, currentZoom - zoomFactor);
+        } else {
+          document.body.style.zoom = 1; // Asegura que no se haga zoom out por debajo del 100%
+        }
+      }
+    }
+  }, { passive: false });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey) {
+      event.preventDefault();
+      let currentZoom = parseFloat(document.body.style.zoom || 1);
+      let zoomFactor = 0.05;
+
+      if (event.key === '+' || event.key === '=') {
+        document.body.style.zoom = currentZoom + zoomFactor;
+      } else if (event.key === '-' || event.key === '_') {
+        if (currentZoom > 1) {
+          document.body.style.zoom = Math.max(1, currentZoom - zoomFactor);
+        } else {
+          document.body.style.zoom = 1; // Asegura que no se haga zoom out por debajo del 100%
+        }
+      }
+    }
+  });
+
+  // Asegura que el zoom inicial sea 1
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.style.zoom = 1;
+  });
+</script>
+        <!--llamar al archivo donde se agregaran los estilos-->
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+        
+
+
+    <div class="hamburguesa">
+        <div class="contenedor_menu">
+            <div class="menu_linea" onclick="toggleMenu()">
+                <div class="opcion"></div>
+                <div class="opcion"></div>
+                <div class="opcion"></div>
+            </div>
+        </div>
+        <div id="efecto_menu" class="efecto_menu">
+            <!-- Botones del formulario -->
+            <div class="menu-buttons">
+                <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+                <a href="#informacion" onclick="toggleMenu()">Nosotros</a>
+                <a href="#mapa" onclick="toggleMenu()">Ubícanos</a>
+                <a href="#beneficios" onclick="toggleMenu()">Beneficios</a>
+                <a href="#productos" onclick="toggleMenu()">Productos</a>
+                <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+            </div>
+        </div>
+        <script>
+            function toggleMenu() {
+                const efectoMenu = document.getElementById('efecto_menu');
+                efectoMenu.classList.toggle('activo'); // Alterna la clase 'activo' para mostrar/ocultar el menú
+            }
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+        </script>
+    </div>
+
+
+    <style>
+        
+        
+    .contenedor_menu {
+        position: fixed; /* Posicionamiento fijo para que no se mueva al hacer scroll */
+        top: 20px; /* Espacio desde la parte superior */
+        right: 20px; /* Espacio desde la derecha */
+        z-index: 1100; /* Asegura que esté por encima de otros elementos */
+    }
+
+    .menu_linea {
+            display: flex;
+            flex-direction: column;
+            gap: 4px; /* Reduce el espacio entre las líneas */
+            cursor: pointer;
+            margin-top: 18px;
+            margin-right: 9px;
+        }
+
+    .menu_linea:hover {
+        transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+    }
+
+    .opcion {
+        width: 23px;       /* Ancho de cada línea */
+        height: 2.5px;      /* Altura de cada línea */
+        background-color: #fff; /* Color de las líneas: blanco */
+        border-radius: 3px;  /* Bordes redondeados */
+        transition: transform 0.3s ease; /* Transición suave para la animación de la "X" */
+    }
+
+    .efecto_menu {
+        /* Estilos base para el menú oculto */
+        position: fixed;  /* Posicionamiento fijo */
+        top: 0;
+        right: 0;
+        width: 155px;    /* Ancho del menú */
+        height: 100%;   /* Altura del menú: 100% de la pantalla */
+        background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+        padding: 20px;    /* Espacio interno */
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Sombra a la izquierda */
+        z-index: 1000;   /* Alto valor de z-index para estar al frente */
+        overflow-y: auto;  /* Permite el desplazamiento vertical si el contenido excede la altura */
+        transform: translateX(100%); /* Lo oculta moviéndolo a la derecha */
+        transition: transform 0.3s ease-in-out; /* Transición suave */
+    }
+
+    .efecto_menu.activo {
+        /* Estilos para mostrar el menú */
+        display: block;
+        transform: translateX(0); /* Lo muestra moviéndolo a su posición original */
+    }
+
+    .menu-buttons {
+        display: flex;          /* Utiliza Flexbox para el diseño */
+        flex-direction: column;  /* Coloca los elementos en columna */
+        margin-top: 100px;    /* Espacio desde la parte superior del menú */
+    }
+
+    .menu-buttons a {
+        display: block;           /* Convierte los enlaces en elementos de bloque */
+        width: 100%;             /* Ocupan todo el ancho del contenedor */
+        padding: 15px;           /* Espacio interno */
+        font-size: 18px;         /* Tamaño de la fuente */
+        color: #fff;             /* Color del texto: blanco */
+        border: none;            /* Sin borde */
+        cursor: pointer;         /* Indica que son interactivos */
+        text-align: center;       /* Alineación del texto: centrado */
+        text-decoration: none;    /* Sin subrayado */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borde inferior */
+    }
+
+    .menu-buttons a:hover {
+        background-color: #1a73e8;  /* Color de fondo al pasar el mouse: azul */
+        color: #fff;          /* Color del texto al pasar el mouse: blanco */
+        transform: translateX(-5px);
+    }
+
+    .menu_linea.activo .opcion:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px); /* Convierte la 1ª línea en parte de la "X" */
+    }
+
+    .menu_linea.activo .opcion:nth-child(2) {
+        opacity: 0;             /* Oculta la 2ª línea */
+    }
+
+    .menu_linea.activo .opcion:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px); /* Convierte la 3ª línea en parte de la "X" */
+    }
+        /* Oculta el botón hamburguesa en pantallas grandes */
+@media (min-width: 769px) {
+    .contenedor_menu {
+        display: none; /* Oculta el botón hamburguesa */
+    }
+}
+    </style>
+
+<form action="post" class="formulario">
+    <button  formaction="#inicio">INICIO</button>
+    <button  formaction="#informacion">NOSOTROS</button>
+    <button  formaction="#productos">PRODUCTOS</button>
+    <button  formaction="#beneficios">BENEFICIOS</button>
+    <button  formaction="#mapa">UBICACION</button>
+    <a href="https://www.facebook.com/share/18xE3tDNQ9/" target="_blank">
+        <img id="facebook-icon" class="item" height="30" src="facebook.svg" alt="facebook" style="margin-top: 23px;"/>
+    </a>
+    <a href="" target="_blank">
+        <img id="instagram-icon" class="item" width="30" height="30" src="instagram.svg" alt="instagram" style="margin-top: 23px;"/>
+    </a>
+    <a href="" target="_blank">
+        <img id="tiktok-icon" class="item" width="30" height="30" src="logo-tiktok.svg" alt="tiktok" style="margin-top: 23px;"/>
+    </a>
+</form>
+
+
+        <style>
+        .item {
+            margin-left: 10px; /* Agrega un margen izquierdo de 10 píxeles */
+        }
+        </style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const facebookIcon = document.getElementById('facebook-icon');
+  const instagramIcon = document.getElementById('instagram-icon');
+  const tiktokIcon = document.getElementById('tiktok-icon');
+  const scrollThreshold = 445; // Define la cantidad de píxeles para el cambio de imagen
+
+  // Define las rutas de las nuevas imágenes
+  const newFacebookSrc = 'facebook 2.svg'; // Reemplaza con la ruta correcta
+  const newInstagramSrc = 'instagram 2.svg'; // Reemplaza con la ruta correcta
+  const newTiktokSrc = 'tik-tok.svg'; // Reemplaza con la ruta correcta
+
+  // Define las rutas de las imágenes originales (opcional, para revertir al subir)
+  const originalFacebookSrc = 'facebook.svg';
+  const originalInstagramSrc = 'instagram.svg';
+  const originalTiktokSrc = 'logo-tiktok.svg';
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY >= scrollThreshold) {
+      facebookIcon.src = newFacebookSrc;
+      instagramIcon.src = newInstagramSrc;
+      tiktokIcon.src = newTiktokSrc;
+    } else {
+      // Opcional: Revertir a las imágenes originales al subir
+      facebookIcon.src = originalFacebookSrc;
+      instagramIcon.src = originalInstagramSrc;
+      tiktokIcon.src = originalTiktokSrc;
+    }
+  });
+});
+</script>
+        
+</header>
+<script>
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) { // Cambia el valor según cuándo quieras que se active
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+<script>
+    document.querySelectorAll('button[formaction]').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault(); // Evita el comportamiento predeterminado
+            const targetId = this.getAttribute('formaction').substring(1); // Obtiene el ID del destino
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave
+            }
+        });
+    });
+    
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const header = document.querySelector('header'); // Reemplaza 'header' con el selector correcto de tu encabezado
+  const scrollThreshold = 445; // Define la cantidad de píxeles para el cambio de color
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY >= scrollThreshold) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const formElement = document.querySelector('.formulario');
+  const scrollThreshold = 445;
+  const scrolledTextColor = '#fff'; // Color blanco
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY >= scrollThreshold) {
+      // Cambia el color de los labels dentro del formulario
+      const labels = formElement.querySelectorAll('label');
+      labels.forEach(label => {
+        label.style.color = scrolledTextColor;
+      });
+
+      // Cambia el color del texto dentro de los inputs (puedes necesitar ajustar el selector)
+      const inputs = formElement.querySelectorAll('input[type="text"], input[type="email"], textarea');
+      inputs.forEach(input => {
+        input.style.color = scrolledTextColor;
+      });
+
+      // Cambia el color del texto del botón (si aplica)
+      const buttons = formElement.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.style.color = scrolledTextColor;
+      });
+    } else {
+      // Restaura el color original de los elementos (esto puede ser más complejo si no se conoce el color inicial)
+      // Una forma más robusta sería agregar/remover una clase en lugar de manipular estilos directamente.
+      const labels = formElement.querySelectorAll('label');
+      labels.forEach(label => {
+        label.style.color = ''; // Restablece al color definido en CSS
+      });
+
+      const inputs = formElement.querySelectorAll('input[type="text"], input[type="email"], textarea');
+      inputs.forEach(input => {
+        input.style.color = '';
+      });
+
+      const buttons = formElement.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.style.color = '';
+      });
+    }
+  });
+});
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const formElement = document.querySelector('.formulario');
+  const scrollThreshold = 445;
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY >= scrollThreshold) {
+      formElement.classList.add('formulario-texto-blanco');
+    } else {
+      formElement.classList.remove('formulario-texto-blanco');
+    }
+  });
+});
+</script>
+
+<style>
+.formulario label,
+.formulario input,
+.formulario textarea,
+.formulario button {
+  /* Tus estilos de color de texto iniciales */
+  color: #333; /* Ejemplo de color de texto inicial */
+}
+
+.formulario.formulario-texto-blanco label,
+.formulario.formulario-texto-blanco input,
+.formulario.formulario-texto-blanco textarea,
+.formulario.formulario-texto-blanco button {
+  color: #fff; /* Color blanco al hacer scroll */
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<div class="imagen_body" style="margin-top: 96px;">
+<div class="contenedor-principal">
+  <div class="texto_central">
+    <h1>BIENVENIDOS <br>A SOLARSUR</h1>
+    <p>La energía del futuro, hoy</p>
+    <a href="https://wa.me/51908823893" target="_blank" class="boton-whatsapp">
+      <img src="whatsapp.png" alt="Icono de WhatsApp">Contáctanos
+    </a>
+  </div>
+  <div class="contenedor-imagen">
+    <img src="imagen fondo.svg" alt="">
+  </div>
+</div>
+    <style>
+.botones-container {
+    display: flex; /* Alinea los botones horizontalmente */
+    gap: 20px; /* Espaciado uniforme entre los íconos */
+    justify-content: center; /* Centra los botones horizontalmente */
+    align-items: center; /* Alinea los íconos verticalmente */
+    margin-top: 40px; /* Espaciado superior para separar los botones del texto */
+    font-family: 'Inter', sans-serif;
+}
+
+
+.contenedor-principal {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: start; /* Alinea los elementos al inicio vertical de su celda */
+  column-gap: 40px;
+  min-height: 100vh;
+  gap: 200px;
+}
+
+
+
+
+
+.texto_central .contenedor-imagen img{
+    position: absolute; /* Posiciona la imagen de fondo */
+    top: -70px; /* Alinea al borde superior */
+    left: 0; /* Alinea al borde izquierdo */
+    width: 120%; /* Ancho completo */
+    height: 180%; /* Alto completo */
+    z-index: -1; /* Envía la imagen al fondo */
+}
+
+.boton-whatsapp {
+    align-items: center; /* Centra verticalmente */
+    background: linear-gradient(to right, #ff7101, #FF7D18, #FF9B34); /* Degradado de izquierda a derecha */
+    color: white; /* Color del texto */
+    padding: 8px 28px; /* Espaciado interno */
+    border-radius: 22px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    font-family: 'Inter', sans-serif;
+    display: inline-flex; /* Flexbox para alinear el texto y el ícono */
+    gap: 10px;
+    margin-top: 8px;
+    font-size: 14pt;
+}
+
+.boton-whatsapp img {
+  width: 32px;
+  height: 32px;
+}
+
+.texto_central {
+    position: relative;
+    z-index: 1; /* Asegura que el texto esté por encima de la imagen */
+    color: white; /* Color del texto */
+    font-family: "Poppins", sans-serif;
+    margin-top: 100px;
+    margin-left: 165px;
+    justify-content: center;
+}
+
+.texto_central h1{
+font-size: 40px;
+}
+.texto_central p{
+font-size: 20px;
+}
+
+.boton-whatsapp:hover {
+    transform: scale(1.05); /* Ligeramente más grande al pasar el ratón */
+    /*añadirle tiempo de animacion*/
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+
+
+.boton img {
+    width: 40px; /* Ajusta el tamaño del ícono */
+    height: 40px; /* Ajusta el tamaño del ícono */
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+.botones-container {
+    display: flex; /* Alinea los botones horizontalmente */
+    gap: 10px; /* Espaciado entre los botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 20px; /* Espaciado superior para separar los botones del texto */
+    font-family: 'Inter', sans-serif;
+}
+
+.botones-container a:hover {
+  transform: scale(1.05); /* Ligeramente más grande al pasar el ratón */
+}
+
+.boton:hover {
+    opacity: 0.8; /* Reduce la opacidad al pasar el cursor */
+}
+</style>
+
+    <script>
+        document.querySelectorAll('.boton').forEach(button => {
+    button.addEventListener('click', function (event) {
+        event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+        const targetId = this.getAttribute('href').substring(1); // Obtiene el ID del destino
+        const targetElement = document.getElementById(targetId); // Busca el elemento con el ID
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave
+        }
+        });
+    });
+    </script>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bloque_texto" >
+<div class="seccion-con-fondo">
+    <div id="caracteristicas" class="caracteristicas">
+        <div class="texto">
+        </div>
+        <div class="caracteristicas-container">
+            <div class="caracteristica">
+                <img src="Layer 1.svg" alt=""><i class="numero">3</i>
+                <p class="descripcion"></p>
+                <h3>Tres años<br>de garantía</h3>
+            </div>
+            
+            <div class="caracteristica">
+                <img src="Layer 2.svg" alt=""><i class="numero">3</i>
+                <p class="descripcion"></p>
+                <h3>Seguimientos<br>de equipo</h3>
+                
+            </div>
+            <div class="caracteristica">
+                <img src="Layer 1.svg" alt=""><i class="numero">30</i>               
+                <p class="descripcion"></p>
+                <h3>Treinta años de experiencia</h3>
+                
+            </div>
+            <div class="caracteristica">
+                <img src="Layer 3.svg" alt=""><i class="numero">300</i>                
+                <p class="descripcion"></p>
+                <h3>Número de<br>instalaciones</h3>
+                
+            </div>
+        </div>
+
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const counters = document.querySelectorAll('.numero');
+
+  counters.forEach(counter => {
+    const target = parseInt(counter.innerText);
+    counter.innerText = 0; // Inicializar el contador en 0
+    let count = 0;
+
+    // Ajustar la duración en función del valor objetivo
+    const baseDuration = 1500; // Duración base para un número "promedio"
+    const durationFactor = 0.8; // Factor para ajustar la duración (puedes experimentar con este valor)
+    const minDuration = 800; // Duración mínima para evitar animaciones demasiado rápidas
+
+    // Cuanto menor sea el target, menor será la duración (y más lento parecerá)
+    const duration = Math.max(minDuration, baseDuration * (target / 100));
+    const interval = duration / target;
+
+    function updateCounter() {
+      count++;
+      counter.innerText = count;
+      if (count < target) {
+        setTimeout(updateCounter, interval);
+      } else {
+        counter.innerText = target; // Asegurar que el valor final sea exacto
+      }
+    }
+
+    if (target > 0) {
+      setTimeout(updateCounter, 100); // Iniciar la animación con un pequeño retraso
+    }
+  });
+});
+        </script>
+
+        <style>
+.caracteristicas {
+    padding: 50px; /* Espaciado interno */
+    background-color: #ffffffaf; /* Fondo blanco */
+}
+.caracteristicas {
+  /* Otros estilos */
+  margin-bottom: 0;
+}
+
+.informacion {
+  /* Otros estilos */
+  margin-top: 0;
+}
+.numero {
+    font-size: 25pt;
+    margin-left: 15px;
+    vertical-align: super;
+    font-weight: 870;
+
+}
+
+.seccion-con-fondo {
+  background-image: url("fondo-texto.jpg"); /* Ruta a tu imagen de fondo unificada */
+  background-size: cover; /* Cubre todo el contenedor padre */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita la repetición */
+}
+
+.caracteristica:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón */
+    transition: transform 0.4s ease-in-out;
+}
+
+
+.caracteristica .numero {
+    text-align: center;
+    /*centrar verticalmente*/
+}
+
+.caracteristicas-container {
+    display: flex; /* Alinea los bloques horizontalmente */
+    gap: 30px; /* Reduce el espaciado entre los bloques */
+    justify-content: center; /* Centra los bloques horizontalmente */
+
+}
+
+.caracteristica {
+    background-color: rgb(255, 255, 255); /* Fondo rojo */
+    color: rgb(48, 48, 48); /* Texto blanco*/
+    border-radius: 18px; /* Bordes redondeados */
+    padding: 20px 10px; /* Reduce el padding interno */
+    text-align: center; /* Centra el contenido */
+    width: 220px; /* Reduce el ancho del bloque */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra más pequeña */
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+.caracteristica h3 {
+    font-size: 16px; /* Reduce el tamaño del título */
+    margin-bottom: 5px; /* Reduce el margen inferior */
+    font-family: 'Inter', sans-serif;
+}
+
+.caracteristica .descripcion {
+    font-size: 12px; /* Reduce el tamaño del texto */
+    font-weight: bold; /* Añade negrita al texto */
+    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .caracteristicas-container {
+        display: grid; /* Cambia a diseño de cuadrícula */
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual ancho */
+        gap: 10px; /* Espaciado entre los bloques */
+        justify-items: center; /* Centra los bloques horizontalmente */
+    }
+
+    .caracteristica {
+        width: 100%; /* Asegura que los bloques ocupen todo el ancho disponible */
+    }
+}
+    </style>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="informacion" class="informacion">
+        <div class="texto-informacion">
+        <h2>Sobre Nosotros</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, fugit libero. Beatae doloremque et autem unde laudantium recusandae tempora aut obcaecati harum, qui vel asperiores voluptates possimus earum minima laborum!</p>
+        </div>
+        <div class="imagen">
+        <img src="mas_informacion.jpg" alt="Información adicional" style="width: 497px; height: 294px;">
+        </div>
+        </div>
+
+    </div>
+<style>
+    .informacion {
+        background-color: #ff9a268e;
+        width: 100%;
+        height: 414px;
+        padding: 260px 64px;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    
+    .texto-informacion{
+
+        background-color: #fff;
+        width: 474px;
+        height: 294px;
+        padding: 20px;
+        border-radius: 18px;
+        flex: 1; /* El texto ocupará el espacio restante */
+        box-sizing: border-box; /* Incluye padding y border en el ancho */
+    }
+
+
+
+        @media (max-width: 768px) {
+    .informacion {
+        display: flex; /* Activa flexbox */
+        flex-direction: column; /* Coloca los elementos en una columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+        text-align: center; /* Centra el texto */
+        gap: 10px; /* Reduce el espacio entre el texto y la imagen */
+    }
+
+    .texto {
+        margin-bottom: 10px; /* Reduce el margen inferior del texto */
+        font-family: 'Inter', sans-serif;
+    }
+
+    .informacion .imagen {
+        margin-top: 0; /* Elimina cualquier margen superior de la imagen */
+        width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+    }
+
+    .informacion .imagen img {
+        width: 100%; /* Ajusta la imagen al ancho del contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+        font-family: 'Inter', sans-serif;
+    }
+
+    .informacion .texto h2 {
+        font-size: 18px; /* Reduce el tamaño del título */
+        font-family: 'Inter', sans-serif;
+    }
+
+    .informacion .texto p {
+        font-size: 14px; /* Reduce el tamaño del texto */
+        line-height: 1.5; /* Ajusta el espaciado entre líneas para mejor legibilidad*/
+        font-family: 'Inter', sans-serif;
+    }
+}
+    </style>
+
+
+<br id="productos">
+
+
+
+    <div class="bloque-complemento">
+  <div class="texto">
+    <h2>Lo que <span style="color: rgb(1, 1, 112);">realmente</span> <span style="color: rgb(1, 1, 112);">necesitas</span> en invierno</h2>
+    <p>¡Para de pagar tanto en la cuenta de luz! Aprovecha los rayos del sol para obtener agua caliente</p>
+  </div>
+  <style>
+    .texto {
+      display: flex;
+      gap: 400px;
+      justify-content: center;
+      margin-top: 27px;
+      text-align: left;
+      font-family: 'Poppins', bold;
+    }
+
+    .texto p {
+      font-size: 10pt;
+      right: 0;
+      width: 500px;
+    }
+
+    .texto h2 {
+      font-size: 28pt;
+    }
+
+    .bloque-complemento {
+      padding: 20px 100px;
+    }
+  </style>
+</div>
+
+
+<div id="productos" class="terma">
+  <div class="animacion-contenedor">
+    <div class="animacion" id="miAnimacion">
+      <style>
+        .animacion {
+          width: 351px;
+          height: 351px;
+          z-index: -1;
+        }
+
+        @keyframes circularMovement {
+          0% {
+            transform: translate(-251px, 100px) rotate(0deg);
+          }
+          100% {
+            transform: translate(251px, 100px) rotate(360deg);
+          }
+        }
+      </style>
+    </div>
+  </div>
+  <div class="imagen-con-texto">
+    <div class="imagen-contenedor1">
+      <img src="terma.svg" alt="">
+    </div>
+    <div class="texto-al-lado">
+      <p>Este es un bloque de texto que se encuentra al costado de la imagen. Puedes agregar aquí la información que necesites.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  var animation = lottie.loadAnimation({
+    container: document.getElementById('miAnimacion'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'circulo animar.json'
+  });
+</script>
+
+<style>
+  .terma {
+    display: flex; /* Coloca la animación y el contenedor de imagen y texto en fila */
+    align-items: center; /* Alinea verticalmente los elementos */
+    padding: 20px;
+
+  }
+
+  .animacion-contenedor {
+    margin-right: 20px; /* Espacio entre la animación y el siguiente bloque */
+    transform: translateX(-50%);
+    margin-top: 100px;
+  }
+
+  .imagen-con-texto {
+    display: flex; /* Coloca la imagen y el texto en fila */
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+    justify-content: center;
+    
+  }
+
+  .imagen-contenedor1 {
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    margin-top: 500px;
+  }
+
+  .imagen-contenedor1 img{
+    width: 600px; /* Ajusta el tamaño máximo según necesites */
+    height: 536px;
+    z-index: 1;
+  }
+  
+
+  .texto-al-lado {
+    max-width: 400px; /* Ancho máximo del texto */
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    margin-top: 500px;
+    text-align: left;
+  }
+
+  .terma {
+  display: flex; /* Coloca la animación y el contenedor de imagen y texto en fila */
+  align-items: center; /* Alinea verticalmente los elementos */
+
+  transform: translateY(-30%);
+  margin-bottom: 10px; /* Reducimos el margen inferior para acercar el siguiente bloque */
+}
+
+.animacion-contenedor {
+  margin-right: 20px; /* Espacio entre la animación y el siguiente bloque */
+}
+
+.imagen-con-texto {
+  display: flex; /* Coloca la imagen y el texto en fila */
+  align-items: center; /* Alinea verticalmente la imagen y el texto */
+}
+
+.imagen-contenedor {
+  margin-right: 20px; /* Espacio entre la imagen y el texto */
+}
+
+.imagen-contenedor img {
+  max-width: 300px; /* Ajusta el tamaño máximo según necesites */
+  height: auto;
+  z-index: 1;
+}
+
+.texto-al-lado {
+  /* Estilos para el bloque de texto */
+  max-width: 400px; /* Ancho máximo del texto */
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+.complementario {
+  padding: 20px 100px;
+  margin-top: 10px; /* Reducimos el margen superior */
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="image-gallery">
+    <!-- Imagen principal -->
+    <div class="main-image-container">
+        <div class="main-image">
+            <img id="mainImage" src="miniatura1.jpeg" alt="Imagen principal">
+        </div>
+
+        <!-- Contenedor de miniaturas debajo de la imagen -->
+        <div class="thumbnail-container">
+            <img class="thumbnail" src="miniatura1.jpeg" alt="Miniatura 1" onclick="changeImage('miniatura1.jpeg')">
+            <img class="thumbnail" src="miniatura2.jpeg" alt="Miniatura 2" onclick="changeImage('miniatura2.jpeg')">
+            <img class="thumbnail" src="miniatura3.jpg" alt="Miniatura 3" onclick="changeImage('miniatura3.jpg')">
+            <img class="thumbnail" src="miniatura4.jpg" alt="Miniatura 4" onclick="changeImage('miniatura4.jpg')">
+        </div>
+    </div>
+
+    <!-- Contenedor del texto al costado de la imagen -->
+    <div class="texto-al-costado">
+        <h2 class="thumbnail-text">Paneles Solares</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. In accusantium fuga consectetur cupiditate laborum neque aut ullam, quas, suscipit, magnam est sed eligendi exercitationem tenetur tempore vero quis quo consequuntur!<br> 
+            <div class="botones-container">
+                <a href="#contacto" class="boton">
+                    <img src="https://img.icons8.com/color/48/marker.png" alt="Ubicación" style="width: 40px; height: 40px; margin-bottom: 10px;">
+                </a>
+                <a href="https://wa.me/51908823893" target="_blank" > 
+                    <img width="50" height="50" src="https://img.icons8.com/color/48/whatsapp.png" alt="whatsapp"/> 
+                </a></div>
+        </p>
+    </div>
+</div>
+<script>
+    function changeImage(imageSrc) {
+    const mainImage = document.getElementById('mainImage');
+    mainImage.src = imageSrc; // Cambia la fuente de la imagen principal
+}
+</script>
+
+    <style>
+        
+.image-gallery {
+    display: flex; /* Alinea los elementos horizontalmente */
+    flex-direction: row; /* Coloca los elementos en una fila */
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    gap: 65px; /* Incrementa el espaciado entre la imagen principal y el texto */
+    margin: 20px;
+    justify-content: center;    
+    font-family: 'Inter', sans-serif; /* Aplica la fuente Inter al cuerpo */
+}
+.main-image-container {
+    display: flex;
+    flex-direction: column; /* Coloca la imagen principal y los thumbnails en una columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    gap: 10px; /* Espaciado entre la imagen principal y los thumbnails */
+}
+
+.main-image img {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease; /* Efecto al pasar el mouse */
+}
+
+.main-image img:hover {
+    transform: scale(1.05); /* Zoom al pasar el mouse */
+}
+
+.thumbnail-container {
+    display: flex; /* Cambia a diseño horizontal */
+    gap: 10px; /* Espaciado entre miniaturas */
+    justify-content: center; /* Centra las miniaturas horizontalmente */
+    font-family: 'Inter', sans-serif;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s, border-color 0.3s;
+    font-family: 'Inter', sans-serif;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
+    border-color: #1b6dc5;
+}
+
+.texto-al-costado {
+    max-width: 300px; /* Limita el ancho del texto */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 16px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}
+@media (max-width: 768px) {
+    .main-image img {
+        width: 300px; /* Reduce el ancho de la imagen principal */
+        height: 200px; /* Reduce la altura de la imagen principal */
+    }
+
+    .thumbnail {
+        width: 70px; /* Reduce el ancho de las miniaturas */
+        height: 70px; /* Reduce la altura de las miniaturas */
+    }
+
+    .image-gallery {
+        flex-direction: column; /* Cambia a diseño vertical en pantallas pequeñas */
+        align-items: center; /* Centra los elementos */
+        gap: 20px; /* Ajusta el espaciado entre la imagen principal y el texto */
+    }
+    .texto-al-costado {
+        text-align: center; /* Centra el texto en pantallas pequeñas */
+        font-family: 'Inter', sans-serif;
+    }
+}
+    </style>
+
+
+
+    
+
+    <div class="beneficios"  id="beneficios">
+        <h2>Beneficios: Cambios que notara al tener un panel o terma solar</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, assumenda?</p>
+        <div class="contenedor">
+            <div class="recuadro">
+                <img src="ruta/a/tu/imagen1.jpg" alt="Imagen 1">
+            </div>
+            <div class="recuadro">
+                <img src="ruta/a/tu/imagen2.png" alt="Imagen 2">
+            </div>
+            <div class="recuadro">
+                <img src="ruta/a/tu/imagen3.gif" alt="Imagen 3">
+            </div>
+            <div class="recuadro">
+                <img src="ruta/a/tu/imagen4.jpeg" alt="Imagen 4">
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .contenedor {
+            display: flex;
+            justify-content: space-around; /* Distribuye los recuadros con espacio entre ellos */
+            align-items: center; /* Centra verticalmente los recuadros (opcional) */
+            width: 80%; /* Ancho del contenedor (ajusta según necesites) */
+            margin: 20px auto; /* Centra el contenedor horizontalmente con un margen superior e inferior */
+            padding: 20px; /* Espacio interno del contenedor (opcional) */
+            box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .recuadro {
+            width: 20%; /* Ancho aproximado de cada recuadro (ajusta según el espacio que quieras entre ellos) */
+            height: 200px; /* Altura de los recuadros (ajusta según necesites) */
+            border: 1px solid #ccc; /* Borde de los recuadros (opcional) */
+            background-color: #ddd; /* Color de fondo por defecto antes de cargar la imagen */
+            display: flex;
+            justify-content: center; /* Centra la imagen horizontalmente dentro del recuadro */
+            align-items: center; /* Centra la imagen verticalmente dentro del recuadro */
+            overflow: hidden; /* Recorta la imagen si es más grande que el recuadro */
+            box-sizing: border-box;
+        }
+
+        .recuadro img {
+            width: 100%; /* La imagen ocupa todo el ancho del recuadro */
+            height: auto; /* Mantiene la proporción de la imagen */
+            display: block; /* Evita espacios extra debajo de la imagen */
+        }
+
+        /* Opcional: Para que los recuadros se apilen en pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .contenedor {
+                flex-direction: column;
+                align-items: stretch; /* Los recuadros ocupan todo el ancho */
+            }
+            .recuadro {
+                width: 100%;
+                margin-bottom: 10px; /* Espacio entre los recuadros apilados */
+            }
+            .beneficios h2{
+                font-size: 20px;
+                font-family: 'Inter', sans-serif;
+            }
+            .beneficios p{
+                font-size: 15px;
+                font-family: 'Inter', sans-serif;
+            }
+            
+        }
+    </style>
+
+<p id="mapa"></p>
+<br>
+
+   
+
+
+    <div class="bloque-mapa">
+        <div class="contenedor-mapa">
+            <!-- Texto al costado -->
+            <div class="texto-mapa">
+                <h2>Encuéntranos</h2>
+                <p>Estamos ubicados en Tacna, Perú. Visítanos para conocer más sobre nuestros productos y servicios.</p>
+                <img src="" alt="descripcion-personaje">
+            </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.1841848210506!2d-70.25401089033413!3d-18.01665388291083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c90e007863fd%3A0x26e628f52fb1847c!2sSOLARSUR!5e0!3m2!1ses-419!2spe!4v1745943586710!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+    </div>
+    <style>
+        @media (max-width: 768px) {
+            iframe {
+        width: 100%; /* Ajusta el ancho del mapa al 100% del contenedor */
+        height: 250px; /* Reduce la altura del mapa */
+    }
+        }
+    </style>
+
+    <br><br><br><br>
+    
+</div>
+</body>
+    
+
+
+
+<style>
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    h1, p {
+        transition: color 0.3s ease;
+    }
+
+    .dark-mode .bloque_texto {
+        background-color: #222;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+    
+    .dark-mode h1, .dark-mode p , .dark-mode h2 {
+        color: #fff;
+    }
+    .dark-mode .carrusel-container {
+        background-color: #222;
+    }
+    .dark-mode .carrusel-container p{
+        color: #000000
+    }
+
+    .dark-mode .card
+    {
+        border: none;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.6); /* Sombra a la izquierda */
+
+    }        
+    
+
+    .toggle-dark-mode {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .toggle-dark-mode i {
+        font-size: 24px;
+        color: #555;
+        transition: color 0.3s ease;
+    }
+
+    .dark-mode .toggle-dark-mode i {
+        color: #eee;
+    }
+</style>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const container = document.querySelector('.container');
+        if (container) {
+            container.classList.toggle('dark-mode');
+        }
+        const toggleIcon = document.querySelector('.toggle-dark-mode i');
+        if (document.body.classList.contains('dark-mode')) {
+            toggleIcon.classList.remove('fa-lightbulb');
+            toggleIcon.classList.add('fa-moon');
+        } else {
+            toggleIcon.classList.remove('fa-moon');
+            toggleIcon.classList.add('fa-lightbulb');
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <div class="social-bar" id="contacto"> 
+        <h1>Contactanos en  solarsurperu1@gmail.com</h1>
+        <a href="https://www.facebook.com/share/18xE3tDNQ9/" target="_blank"> 
+            <img width="50" height="50" src="https://img.icons8.com/color/48/facebook.png" alt="facebook"/> 
+        </a> 
+        <a href="https://wa.me/51908823893" target="_blank"> 
+            <img width="50" height="50" src="https://img.icons8.com/color/48/whatsapp.png" alt="whatsapp"/> 
+        </a> 
+         
+    </div>
+
+
+
+    <button class="toggle-dark-mode" onclick="toggleDarkMode()">
+        <i class="fas fa-lightbulb"></i>
+    </button>
+
+
+
+
+
+
+
+
+<!-- CHATBOT -->
+
+
+
+    <div id="chat-widget" class="chat-widget">
+        <button id="chat-button">
+            
+            <img src="chatbot.png" alt="Chat"  style="width: 100%;  object-fit: cover;  ">
+        </button>   
+        <div id="chat-container">
+            <div id="chat-messages">
+                <!-- Aquí se mostrarán los mensajes -->
+            </div>
+            <div id="input-container">
+                <input type="text" id="user-input" placeholder="En qué te puedo ayudar...">
+                <button id="send-btn">Enviar</button>
+            </div>
+        </div>
+    </div>
+    
+<script src="chatbot.js"></script>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</footer>
+
+
+<style>
+
+
+
+    #chat-widget {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1000;
+        
+    }
+    #chat-button {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(1, 36, 124);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Inter', sans-serif;
+    }
+    #chat-container {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        left: 20px;
+        width: 300px;
+        max-height: 400px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        flex-direction: column;
+        font-family: 'Inter', sans-serif;
+    }
+    #chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        font-family: 'Inter', sans-serif;
+    }
+    .message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: 'Inter', sans-serif;
+    }
+ 
+    #input-container {
+        display: flex;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+    }
+    #user-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    #send-btn {
+        padding: 10px;
+        background-color: #1b6dc5;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    #send-btn:hover {
+        background-color: #f6f7f8;
+        color: #1b6dc5;
+    }
+    @media (max-width: 768px) {
+    footer h1 {
+        font-size: 18px; /* Reduce el tamaño del texto del correo */
+        text-align: center; /* Centra el texto */
+    }
+}
+</style>
+
+</body>
+
+</html>
